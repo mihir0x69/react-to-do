@@ -1,5 +1,7 @@
 var React = require('react');
 var TodoList = require('TodoList');
+var AddTodo = require('AddTodo');
+var TodoSearch = require('TodoSearch');
 
 module.exports = React.createClass({
   getInitialState: function(){
@@ -17,7 +19,9 @@ module.exports = React.createClass({
           id: 3,
           text: 'Clean the yard'
         }
-      ]
+      ],
+      showCompleted: false,
+      searchText: ''
     }
   },
   render: function(){
@@ -25,8 +29,19 @@ module.exports = React.createClass({
 
     return(
       <div>
+        <TodoSearch handleSearch={this.handleSearch} />
         <TodoList todos={todos} />
+        <AddTodo handleAddTodo={this.handleAddTodo} />
       </div>
     )
+  },
+  handleAddTodo: function(text){
+    alert('New Todo: ' + text);
+  },
+  handleSearch: function(showCompleted, searchText){
+    this.setState({
+      showCompleted: showCompleted,
+      searchText: searchText.toLowerCase()
+    })
   }
 });
