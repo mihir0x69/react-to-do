@@ -12,7 +12,7 @@ describe('TodoSearch', () => {
     expect(TodoSearch).toExist();
   });
 
-  it('Should call onSearch with entered input with text', () => {
+  it('Should call onSearch with entered input with proper text', () => {
     var searchText = 'Dog';
     var spy = expect.createSpy();
     var todoSearch = TestUtils.renderIntoDocument(<TodoSearch handleSearch={spy} />);
@@ -23,13 +23,14 @@ describe('TodoSearch', () => {
     expect(spy).toHaveBeenCalledWith(false, searchText);
   });
 
-  it('Should call onSearch with proper checked value', () => {
+  it('Should call handleSearch with proper checked value', () => {
     var spy = expect.createSpy();
     var todoSearch = TestUtils.renderIntoDocument(<TodoSearch handleSearch={spy} />);
 
+    todoSearch.refs.searchText.value = "Test Search";
     todoSearch.refs.showCompleted.checked = true;
     TestUtils.Simulate.change(todoSearch.refs.showCompleted);
 
-    expect(spy).toHaveBeenCalledWith(true, '');
+    expect(spy).toHaveBeenCalledWith(true, 'Test Search');
   });
 });
