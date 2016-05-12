@@ -10,15 +10,18 @@ module.exports = React.createClass({
       todos: [
         {
           id: uuid(),
-          text: 'Walk the dog'
+          text: 'Walk the dog',
+          completed: false
         },
         {
           id: uuid(),
-          text: 'Feed the cat'
+          text: 'Feed the cat',
+          completed: false
         },
         {
           id: uuid(),
-          text: 'Clean the yard'
+          text: 'Clean the yard',
+          completed: true
         }
       ],
       showCompleted: false,
@@ -31,7 +34,7 @@ module.exports = React.createClass({
     return(
       <div>
         <TodoSearch handleSearch={this.handleSearch} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} handleToggle={this.handleToggle} />
         <AddTodo handleAddTodo={this.handleAddTodo} />
       </div>
     )
@@ -42,7 +45,8 @@ module.exports = React.createClass({
           ...this.state.todos,
           {
             id: uuid(),
-            text: text
+            text: text,
+            completed: false
           }
       ]
     });
@@ -52,5 +56,17 @@ module.exports = React.createClass({
       showCompleted: showCompleted,
       searchText: searchText.toLowerCase()
     })
+  },
+  handleToggle: function(id){
+    var updatedTodos = this.state.todos.map((todo) => {
+      if(todo.id === id){
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+
+    this.setState({
+      todos: updatedTodos
+    });
   }
 });
