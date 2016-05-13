@@ -20,8 +20,8 @@ module.exports = React.createClass({
     var showCompleted = this.refs.showCompleted.checked;
     var searchText = this.refs.searchText.value;
 
-    if(searchText.length > 0){
+    // if(searchText.length > 0){
         this.props.handleSearch(showCompleted, searchText);
-    }
+    // }
   }
 });

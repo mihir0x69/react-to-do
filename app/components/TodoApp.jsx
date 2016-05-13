@@ -19,12 +19,13 @@ module.exports = React.createClass({
     TodoAPI.setTodos(this.state.todos);
   },
   render: function(){
-    var {todos} = this.state;
+    var {todos, showCompleted, searchText} = this.state;
+    var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
     return(
       <div>
         <TodoSearch handleSearch={this.handleSearch} />
-        <TodoList todos={todos} handleToggle={this.handleToggle} />
+        <TodoList todos={filteredTodos} handleToggle={this.handleToggle} />
         <AddTodo handleAddTodo={this.handleAddTodo} />
       </div>
     )
