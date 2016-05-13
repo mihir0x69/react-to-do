@@ -6,6 +6,11 @@
 @import "foundation";
 @include foundation-everything;
 
+//components
+@import "components/page-title";
+@import "components/container";
+@import "components/todo";
+
 *{
   outline: none;
 }

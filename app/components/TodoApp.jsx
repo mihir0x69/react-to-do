@@ -25,9 +25,16 @@ module.exports = React.createClass({
 
     return(
       <div>
-        <TodoSearch handleSearch={this.handleSearch} />
-        <TodoList todos={filteredTodos} handleToggle={this.handleToggle} />
-        <AddTodo handleAddTodo={this.handleAddTodo} />
+        <h1 className="page-title text-center">Todo App</h1>
+        <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
+            <div className="container">
+              <TodoSearch handleSearch={this.handleSearch} />
+              <TodoList todos={filteredTodos} handleToggle={this.handleToggle} />
+              <AddTodo handleAddTodo={this.handleAddTodo} />
+            </div>
+          </div>
+        </div>
       </div>
     )
   },
