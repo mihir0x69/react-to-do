@@ -23,6 +23,17 @@ describe('Reducers', () => {
       };
       var res = reducers.showCompletedReducer(df(true), df(action));
       expect(res).toEqual(false);
+    });
+  });
+
+  describe('todosReducer', () => {
+    it('Should add new todo', () => {
+      var action = {
+        type: 'ADD_TODO',
+        text: 'Walk the dog'
+      };
+      var res = reducers.todosReducer(df([]), action);
+      expect(res).toEqual(action);
     })
   })
 });
