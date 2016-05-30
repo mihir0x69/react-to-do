@@ -49,7 +49,7 @@ describe('Reducers', () => {
       ];
       var action = {
         type: 'TOGGLE_TODO',
-        id: 123
+        id: '123'
       };
       var res = reducers.todosReducer(df(todos), df(action));
       expect(res[0].completed).toEqual(false);
