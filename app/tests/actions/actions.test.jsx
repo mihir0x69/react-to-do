@@ -20,6 +20,21 @@ describe('Actions', () => {
     expect(res).toEqual(action);
   });
 
+  it('Should generate add todos action', () => {
+    var action = {
+      type: 'ADD_TODOS',
+      todos: [{
+        id: 111,
+        text: 'anything',
+        completed: false,
+        completedAt: undefined,
+        createdAt: 33000
+      }]
+    };
+    var res = actions.addTodos(action.todos);
+    expect(res).toEqual(action);
+  });
+
   it('Should toggle showCompleted', () => {
     var action = {
       type: 'TOGGLE_SHOW_COMPLETED'
