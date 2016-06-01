@@ -22,7 +22,7 @@ export var Todo = React.createClass({
     return(
       <div className={todoClassName} onClick={this.handleChange}>
         <div>
-          <input type="checkbox" checked={completed} />
+          <input type="checkbox" checked={completed} defaultChecked={false} />
         </div>
         <div>
           <p>{text}</p>
